@@ -1,15 +1,15 @@
-// Task5 : Linear Queue
+// Task7 : Circular Queue
 
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 5
+#define SIZE 10
 
-int queue[MAX], front = -1, rear = -1;
+int queue[SIZE], front = -1, rear = -1;
 
-int isFull() { return rear == MAX - 1; }
+int isEmpty() { return front == -1 && rear == -1; }
 
-int isEmpty() { return front == -1 || front > rear; }
+int isFull() { return (rear + 1) % SIZE == front; }
 
 void enqueue(int data) {
   if (isFull()) {
@@ -19,7 +19,7 @@ void enqueue(int data) {
   if (isEmpty())
     front = rear = 0;
   else
-    rear++;
+    rear = (rear + 1) % SIZE;
   queue[rear] = data;
 }
 
@@ -29,10 +29,10 @@ int dequeue() {
     exit(0);
   }
   int data = queue[front];
-  if (front == rear)
+  if (front == rear && front != -1)
     front = rear = -1;
   else
-    front++;
+    front = (front + 1) % SIZE;
   return data;
 }
 
@@ -42,9 +42,9 @@ void display() {
     return;
   }
   printf("Queue: ");
-  for (int i = front; i <= rear; i++)
+  for (int i = front; i != rear; i = (i + 1) % SIZE)
     printf("%d ", queue[i]);
-  printf("\n");
+  printf("%d\n", queue[rear]);
 }
 
 int main() {
@@ -62,15 +62,16 @@ int main() {
       enqueue(data);
       break;
     case 2:
-      dequeue();
+      printf("Dequeued %d\n", dequeue());
       break;
     case 3:
       display();
       break;
     case 4:
-      return 0;
+      exit(0);
     default:
       printf("Invalid choice\n");
     }
   }
+  return 0;
 }
