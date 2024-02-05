@@ -24,12 +24,10 @@ void insertAfter(Node *head, int data, int key) {
     printf("Cannot insert. List is empty\n");
     return;
   }
-  Node *p = head, *q = NULL;
+  Node *p = head;
 
-  while (p != NULL && p->data != key) {
-    q = p;
+  while (p != NULL && p->data != key)
     p = p->next;
-  }
 
   if (p == NULL) {
     printf("Key not found\n");
@@ -41,12 +39,12 @@ void insertAfter(Node *head, int data, int key) {
   p->next = newNode;
 }
 
-void insertBefore(Node **head, int data, int key) {
-  if (*head == NULL) {
+Node *insertBefore(Node *head, int data, int key) {
+  if (head == NULL) {
     printf("Cannot insert. List is empty\n");
-    return;
+    return head;
   }
-  Node *p = *head, *q = NULL;
+  Node *p = head, *q = NULL;
 
   while (p != NULL && p->data != key) {
     q = p;
@@ -55,17 +53,18 @@ void insertBefore(Node **head, int data, int key) {
 
   if (p == NULL) {
     printf("Key not found\n");
-    return;
+    return head;
   }
 
   Node *newNode = createNode(data);
-  if (p == *head) {
-    newNode->next = *head;
-    *head = newNode;
+  if (p == head) {
+    newNode->next = head;
+    head = newNode;
   } else {
-    q->next = newNode;
     newNode->next = p;
+    q->next = newNode;
   }
+  return head;
 }
 
 Node *insertBegin(Node *head, int data) {
