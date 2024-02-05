@@ -44,8 +44,7 @@ void display(Stack *s) {
     printf("Stack is empty\n");
     return;
   }
-  for (int i = s->top; i >= 0; i--)
-    printf("%d\n", s->data[i]);
+  for (int i = s->top; i >= 0; i--) printf("%d\n", s->data[i]);
 }
 
 int main() {
@@ -63,28 +62,26 @@ int main() {
     scanf("%d", &choice);
 
     switch (choice) {
-    case 1:
-      printf("Enter the item to be pushed : ");
-      scanf("%d", &item);
-      push(&s, item);
-      break;
-    case 2:
-      item = pop(&s);
-      if (item != -1)
-        printf("Popped item is : %d\n", item);
-      break;
-    case 3:
-      item = peek(&s);
-      if (item != -1)
-        printf("Item at the top is : %d\n", item);
-      break;
-    case 4:
-      display(&s);
-      break;
-    case 5:
-      return 0;
-    default:
-      printf("Wrong choice\n");
+      case 1:
+        printf("Enter the item to be pushed : ");
+        scanf("%d", &item);
+        push(&s, item);
+        break;
+      case 2:
+        item = pop(&s);
+        if (item != -1) printf("Popped item is : %d\n", item);
+        break;
+      case 3:
+        item = peek(&s);
+        if (item != -1) printf("Item at the top is : %d\n", item);
+        break;
+      case 4:
+        display(&s);
+        break;
+      case 5:
+        return 0;
+      default:
+        printf("Wrong choice\n");
     }
   }
 

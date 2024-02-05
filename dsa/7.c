@@ -42,8 +42,7 @@ void display() {
     return;
   }
   printf("Queue: ");
-  for (int i = front; i != rear; i = (i + 1) % SIZE)
-    printf("%d ", queue[i]);
+  for (int i = front; i != rear; i = (i + 1) % SIZE) printf("%d ", queue[i]);
   printf("%d\n", queue[rear]);
 }
 
@@ -56,21 +55,21 @@ int main() {
     scanf("%d", &choice);
 
     switch (choice) {
-    case 1:
-      printf("Enter data to enqueue: ");
-      scanf("%d", &data);
-      enqueue(data);
-      break;
-    case 2:
-      printf("Dequeued %d\n", dequeue());
-      break;
-    case 3:
-      display();
-      break;
-    case 4:
-      exit(0);
-    default:
-      printf("Invalid choice\n");
+      case 1:
+        printf("Enter data to enqueue: ");
+        scanf("%d", &data);
+        enqueue(data);
+        break;
+      case 2:
+        printf("Dequeued %d\n", dequeue());
+        break;
+      case 3:
+        display();
+        break;
+      case 4:
+        exit(0);
+      default:
+        printf("Invalid choice\n");
     }
   }
   return 0;

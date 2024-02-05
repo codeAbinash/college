@@ -26,8 +26,7 @@ void insertAfter(Node *head, int data, int key) {
   }
   Node *p = head;
 
-  while (p != NULL && p->data != key)
-    p = p->next;
+  while (p != NULL && p->data != key) p = p->next;
 
   if (p == NULL) {
     printf("Key not found\n");
@@ -83,8 +82,7 @@ Node *insertEnd(Node *head, int data) {
     head = createNode(data);
   } else {
     Node *p = head;
-    while (p->next != NULL)
-      p = p->next;
+    while (p->next != NULL) p = p->next;
     p->next = createNode(data);
   }
   return head;
@@ -92,8 +90,7 @@ Node *insertEnd(Node *head, int data) {
 
 Node *findKey(Node *head, int key) {
   Node *p = head;
-  while (p != NULL && p->data != key)
-    p = p->next;
+  while (p != NULL && p->data != key) p = p->next;
   return p;
 }
 
@@ -160,60 +157,62 @@ int main() {
   int choice, data, key;
 
   while (1) {
-    printf("\n1.Insert at beginning\n2.Insert at end\n3.Insert after a "
-           "key\n4.Insert before a key\n");
-    printf("5.Delete a key\n6.Find a key\n7.Display list\n8.Reverse "
-           "list\n9.Exit\n");
+    printf(
+        "\n1.Insert at beginning\n2.Insert at end\n3.Insert after a "
+        "key\n4.Insert before a key\n");
+    printf(
+        "5.Delete a key\n6.Find a key\n7.Display list\n8.Reverse "
+        "list\n9.Exit\n");
     printf("Enter your choice: ");
     scanf("%d", &choice);
 
     switch (choice) {
-    case 1:
-      printf("Enter data: ");
-      scanf("%d", &data);
-      head = insertBegin(head, data);
-      break;
-    case 2:
-      printf("Enter data: ");
-      scanf("%d", &data);
-      head = insertEnd(head, data);
-      break;
-    case 3:
-      printf("Enter data and key: ");
-      scanf("%d%d", &data, &key);
-      insertAfter(head, data, key);
-      break;
-    case 4:
-      printf("Enter data and key: ");
-      scanf("%d%d", &data, &key);
-      insertBefore(head, data, key);
-      break;
-    case 5:
-      printf("Enter key: ");
-      scanf("%d", &key);
-      head = deleteNode(head, key);
-      break;
-    case 6:
-      printf("Enter key: ");
-      scanf("%d", &key);
-      Node *foundNode = findKey(head, key);
-      if (foundNode != NULL) {
-        printf("Key found: %d\n", foundNode->data);
-      } else {
-        printf("Key not found\n");
-      }
-      break;
-    case 7:
-      display(head);
-      break;
-    case 8:
-      head = reverseList(head);
-      break;
-    case 9:
-      freeList(head);
-      exit(0);
-    default:
-      printf("Invalid choice\n");
+      case 1:
+        printf("Enter data: ");
+        scanf("%d", &data);
+        head = insertBegin(head, data);
+        break;
+      case 2:
+        printf("Enter data: ");
+        scanf("%d", &data);
+        head = insertEnd(head, data);
+        break;
+      case 3:
+        printf("Enter data and key: ");
+        scanf("%d%d", &data, &key);
+        insertAfter(head, data, key);
+        break;
+      case 4:
+        printf("Enter data and key: ");
+        scanf("%d%d", &data, &key);
+        insertBefore(head, data, key);
+        break;
+      case 5:
+        printf("Enter key: ");
+        scanf("%d", &key);
+        head = deleteNode(head, key);
+        break;
+      case 6:
+        printf("Enter key: ");
+        scanf("%d", &key);
+        Node *foundNode = findKey(head, key);
+        if (foundNode != NULL) {
+          printf("Key found: %d\n", foundNode->data);
+        } else {
+          printf("Key not found\n");
+        }
+        break;
+      case 7:
+        display(head);
+        break;
+      case 8:
+        head = reverseList(head);
+        break;
+      case 9:
+        freeList(head);
+        exit(0);
+      default:
+        printf("Invalid choice\n");
     }
   }
 
