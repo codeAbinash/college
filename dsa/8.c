@@ -186,7 +186,7 @@ int main() {
     case 4:
       printf("Enter data and key: ");
       scanf("%d%d", &data, &key);
-      insertBefore(&head, data, key);
+      insertBefore(head, data, key);
       break;
     case 5:
       printf("Enter key: ");
